@@ -173,7 +173,6 @@ If the application uses MySQL, configure the database connection using your loca
 - Improve model performance through feature engineering and hyperparameter tuning.
 - Add interactive data visualizations.
 - Include detailed prediction reports.
-- Add a student performance dashboard.
 - Improve input validation and error handling.
 - Deploy the application online.
 
@@ -193,7 +192,3 @@ Through this project, I practiced:
 **Yuvraj Pal**
 
 Aspiring Data Analyst | Data Science & Machine Learning Enthusiast
-
-## 📄 License
-
-This project can be shared and reused under a suitable open-source license. Add a `LICENSE` file if you decide to publish it under a specific license.
