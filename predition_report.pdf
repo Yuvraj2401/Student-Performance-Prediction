@@ -1,0 +1,84 @@
+# ==========================================
+# Student Performance Prediction
+# Create PDF Report
+# ==========================================
+
+import os
+import pandas as pd
+
+from reportlab.platypus import (
+    SimpleDocTemplate,
+    Table,
+    TableStyle,
+    Paragraph
+)
+
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
+
+# ==========================================
+# Create Reports Folder
+# ==========================================
+
+if not os.path.exists("reports"):
+    os.makedirs("reports")
+
+# ==========================================
+# Read Excel Prediction History
+# ==========================================
+
+excel_file = "reports/predictions.xlsx"
+
+if not os.path.exists(excel_file):
+    print("predictions.xlsx not found!")
+    exit()
+
+df = pd.read_excel(excel_file)
+
+# ==========================================
+# Create PDF
+# ==========================================
+
+pdf_file = "reports/prediction_report.pdf"
+
+pdf = SimpleDocTemplate(pdf_file)
+
+styles = getSampleStyleSheet()
+
+elements = []
+
+title = Paragraph(
+    "<b>Student Performance Prediction Report</b>",
+    styles["Title"]
+)
+
+elements.append(title)
+
+elements.append(Paragraph("<br/><br/>", styles["Normal"]))
+
+# Convert DataFrame to Table
+table_data = [list(df.columns)]
+
+for row in df.values.tolist():
+    table_data.append(row)
+
+table = Table(table_data)
+
+table.setStyle(TableStyle([
+
+    ('BACKGROUND', (0,0), (-1,0), colors.darkblue),
+    ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+    ('GRID', (0,0), (-1,-1), 1, colors.black),
+    ('BACKGROUND', (0,1), (-1,-1), colors.beige),
+    ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+    ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+    ('BOTTOMPADDING', (0,0), (-1,0), 10)
+
+]))
+
+elements.append(table)
+
+pdf.build(elements)
+
+print("PDF Report Generated Successfully!")
+print("Saved as:", pdf_file)

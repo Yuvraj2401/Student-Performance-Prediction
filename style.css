@@ -1,0 +1,93 @@
+/* =====================================
+   Student Performance Prediction System
+   style.css
+===================================== */
+
+/* Background */
+.stApp {
+    background-color: #F5F7FA;
+}
+
+/* Main Title */
+h1 {
+    color: #0A66C2;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* Sub Heading */
+h2, h3 {
+    color: #1F2937;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #0A66C2;
+}
+
+section[data-testid="stSidebar"] * {
+    color: white;
+}
+
+/* Buttons */
+.stButton > button {
+    background-color: #0A66C2;
+    color: white;
+    border-radius: 10px;
+    height: 45px;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.stButton > button:hover {
+    background-color: #084A91;
+}
+
+/* Text Input */
+.stTextInput input {
+    border-radius: 8px;
+    border: 2px solid #0A66C2;
+}
+
+/* Number Input */
+.stNumberInput input {
+    border-radius: 8px;
+    border: 2px solid #0A66C2;
+}
+
+/* Select Box */
+.stSelectbox div {
+    border-radius: 8px;
+}
+
+/* Success Message */
+.stSuccess {
+    border-radius: 10px;
+}
+
+/* Error Message */
+.stError {
+    border-radius: 10px;
+}
+
+/* DataFrame */
+[data-testid="stDataFrame"] {
+    border: 2px solid #0A66C2;
+    border-radius: 10px;
+}
+
+/* Metric Cards */
+[data-testid="metric-container"] {
+    background-color: white;
+    border: 2px solid #0A66C2;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Footer */
+footer {
+    visibility: hidden;
+}

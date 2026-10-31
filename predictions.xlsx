@@ -1,0 +1,71 @@
+# ==========================================
+# Save Predictions to Excel
+# ==========================================
+
+import pandas as pd
+import os
+
+def save_prediction(
+    student_name,
+    gender,
+    age,
+    department,
+    study_hours,
+    attendance,
+    assignment_score,
+    quiz_score,
+    midterm_marks,
+    previous_marks,
+    prediction
+):
+
+    # Create reports folder if it doesn't exist
+    if not os.path.exists("reports"):
+        os.makedirs("reports")
+
+    file = "reports/predictions.xlsx"
+
+    new_record = pd.DataFrame([{
+        "Student Name": student_name,
+        "Gender": gender,
+        "Age": age,
+        "Department": department,
+        "Study Hours": study_hours,
+        "Attendance": attendance,
+        "Assignment Score": assignment_score,
+        "Quiz Score": quiz_score,
+        "Midterm Marks": midterm_marks,
+        "Previous Marks": previous_marks,
+        "Prediction": prediction
+    }])
+
+    # If file exists, append new record
+    if os.path.exists(file):
+        old_data = pd.read_excel(file)
+        data = pd.concat([old_data, new_record], ignore_index=True)
+    else:
+        data = new_record
+
+    data.to_excel(file, index=False)
+
+    print("Prediction saved successfully!")
+
+# ==========================================
+# Example
+# ==========================================
+
+if __name__ == "__main__":
+
+    save_prediction(
+        "Rahul Kumar",
+        "Male",
+        20,
+        "BCA",
+        6,
+        92,
+        88,
+        85,
+        84,
+        82,
+        "PASS"
+    )
